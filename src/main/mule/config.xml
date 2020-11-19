@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<http:listener-config name="scm-mvp-deliverymoment-exp-api-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="8081" />
+    </http:listener-config>
+      <apikit:config name="scm-mvp-deliverymoment-exp-api-config" api="api\scm-mvp-deliverymoment-exp-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <api-gateway:autodiscovery apiId="16470854" doc:name="API Autodiscovery" doc:id="702a44c5-1720-479d-bbaf-828136a58403" flowRef="scm-mvp-deliverymoment-exp-api-main" ignoreBasePath="true"/>
+	<global-property doc:name="Global Property" doc:id="289aa26d-cca6-48c2-9b91-af1b92206d6a" name="mule.env" value="local" />
+	<configuration-properties doc:name="Environment Config File" doc:id="360e39b3-a54b-40e2-9a53-800525a23ee0" file="config/${mule.env}-env-config.yaml" />
+	<configuration-properties doc:name="Anypoint Tool Properties" doc:id="5403269f-178b-4997-8ba9-21f3bbee68a0" file="configuration.properties" />
+	<configuration-properties doc:name="Application config File" doc:id="74b304f7-7b6e-4ff2-a182-b97e01b161da" file="base-api-config.yaml" />
+	
+	</mule>

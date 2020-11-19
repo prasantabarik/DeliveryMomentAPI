@@ -1,0 +1,14 @@
+{
+"storeNumber": 4020,
+"deliveryStreamNumber": 2,
+"deliveryStreamName": "HOUDBAAR",
+"schemaName": "BASISSCHEMA",
+"deliveryDateFrom": "2020-12-02",
+"deliveryDateTo": "2020-12-02",
+"orderDateFrom": "2020-12-01",
+"orderDateTo": "2020-12-01",
+"fillDateFrom": "2020-12-02",
+"fillDateTo": "2020-12-02",
+"startFillTimeFrom": "2020-12-02",
+"startFillTimeTo": "2020-12-02"
+}

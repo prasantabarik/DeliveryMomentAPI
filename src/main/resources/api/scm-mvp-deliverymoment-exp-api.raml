@@ -1,0 +1,206 @@
+#%RAML 1.0
+title: SCM MVP DeliveryMoment Exp API
+
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/33eeecdb-35f0-4bc9-baeb-cebc3227a126/ # 
+version: v1
+
+uses:
+  commonlib: /exchange_module/ah-svc-mvp/common-raml-library/1.0.0/common-raml-library.raml
+  clib: /exchange_module/ah-svc-mvp/common-raml-library//1.0.0/common-raml-library.raml
+  errorlib: /exchange_module/ah-svc-mvp/common-error-library/1.0.0/common-error-library.raml
+
+traits:
+  -clientId: !include /exchange_module/ah-svc-mvp/common-security-trait/1.0.0/client-id-enforcement.raml
+  -jwt: !include /exchange_module/ah-svc-mvp/common-security-trait/1.0.0/jwt-validation.raml
+types: 
+  DeliveryMoment: !include datatype/DeliveryMomentData.raml
+  GetDeliveryMoment: !include datatype/GetDeliveryMomentRequestData.raml
+
+/healthCheck:
+  is: [-clientId,
+       -jwt]
+  type: clib.healthCheck
+
+/deliveryMoment:
+  is: [-clientId,
+       -jwt]
+  displayName: Delivery Moment
+  get:
+    queryParameters:
+      storeNumber:
+        description: Store Number
+        type: integer
+        required: false
+      deliveryStreamNumber:
+        description: Stream Number
+        type: integer
+        required: false
+      deliveryStreamName:
+        description: Delivery Stream Name
+        type: string
+        required: false
+      schemaName:
+        description: Schema Name
+        type: string
+        required: false
+      deliveryDateFrom:
+        description: Delivery Date Time From
+        type: date-only
+        required: false
+      deliveryDateTo:
+        description: Delivery Date To
+        type: date-only
+        required: false
+      orderDateFrom:
+        description: Order Date From
+        type: date-only
+        required: false
+      orderDateTo:
+        description: Order Date To
+        type: date-only
+        required: false
+      fillDateFrom:
+        description: Fill Date From
+        type: date-only
+        required: false
+      fillDateTo:
+        description: Fill Date To
+        type: date-only
+        required: false
+      startFillTimeFrom:
+        description: Start Fill Time From
+        type: date-only
+        required: false
+      startFillTimeTo:
+        description: Start Fill Time To
+        type: date-only
+        required: false
+    responses:
+        200:
+          body:
+            application/json:
+              type: DeliveryMoment
+              example: !include examples/DeliveryMomentData.json
+        400:
+          body:
+            application/json:
+              description: Bad Request
+              type: errorlib.error-type
+            application/xml:
+              description: Bad Request
+              type: errorlib.error-type
+        500:
+          body:
+            application/json:
+              description: Unexpected Error Occurred
+              type: errorlib.error-type
+            application/xml:
+              description: Unexpected Error Occurred
+              type: errorlib.error-type
+  post:
+    body:
+      application/json:
+        type: DeliveryMoment
+        example: !include examples/DeliveryMomentData.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/PostOrUpdateDeliveryMomentResponse.json
+      400:
+        body:
+          application/json:
+            description: Bad Request
+            type: errorlib.error-type
+          application/xml:
+            description: Bad Request
+            type: errorlib.error-type
+      500:
+        body:
+          application/json:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+          application/xml:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+  put:
+    body:
+      application/json:
+        type: DeliveryMoment
+        example: !include examples/DeliveryMomentData.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/PostOrUpdateDeliveryMomentResponse.json
+      400:
+        body:
+          application/json:
+            description: Bad Request
+            type: errorlib.error-type
+          application/xml:
+            description: Bad Request
+            type: errorlib.error-type
+      500:
+        body:
+          application/json:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+          application/xml:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+  delete:
+    body:
+      application/json:
+    responses:
+      200:
+       body:
+        application/json:
+          example: !include /examples/DeleteDeliveryMomentResponse.json
+      400:
+        body:
+          application/json:
+            description: Bad Request
+            type: errorlib.error-type
+          application/xml:
+            description: Bad Request
+            type: errorlib.error-type
+      500:
+        body:
+          application/json:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+          application/xml:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+/getDeliveryMoment:
+  is: [-clientId,
+       -jwt]
+  displayName: Get Delivery Moment
+  post:
+    body:
+      application/json:
+        type: GetDeliveryMoment
+        example: !include /examples/GetDeliveryMomentRequestData.json
+    responses:
+      200:
+       body:
+        application/json:
+          type: DeliveryMoment
+          example: !include examples/DeliveryMomentData.json
+      400:
+        body:
+          application/json:
+            description: Bad Request
+            type: errorlib.error-type
+          application/xml:
+            description: Bad Request
+            type: errorlib.error-type
+      500:
+        body:
+          application/json:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type
+          application/xml:
+            description: Unexpected Error Occurred
+            type: errorlib.error-type

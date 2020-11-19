@@ -1,0 +1,85 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  storeNumber:
+    type: integer
+    required: false
+  streamNumber:
+    type: integer
+    required: false
+  deliveryStreamName:
+    type: string
+    required: false
+  schemaName:
+    type: string
+    required: false
+  startFillDateTime:
+    type: string
+    required: false
+  deliveryDateTime:
+    type: string
+    required: false
+  fillDateTime:
+    type: string
+    required: false
+  orderDateTime:
+    type: string
+    required: false
+  initialPromotionFlag:
+    type: string
+    required: false
+  mainDeliveryFlag:
+    type: string
+    required: false
+  boxSize:
+    type: integer
+    required: false
+  storeAdviseFlag:
+    type: string
+    required: false
+  logisticGroupExclusion:
+    type: array
+    required: false
+    items:
+      properties:
+        logisticGroupNumber:
+          type: integer
+          required: false
+  orderStatus:
+    type: string
+    required: false
+  totalInitialOrderQuantity:
+    type: string
+    required: false
+  totalOrderQuantity:
+    type: string
+    required: false
+  deliveryScheamaType:
+    type: integer
+    required: false
+  delivererNumber: 
+    type: integer
+    required: false
+  storeOrder:
+    type: array
+    required: false
+    items:
+      properties:
+        orderNumber:
+          type: integer
+          required: false
+        warehouseNumber:
+          type: integer
+          required: false
+  createdBy:
+    type: string
+    required: false
+  creationDateTime:
+    type: string
+    required: false
+  updatedBy:
+    type: string
+    required: false
+  updateDateTime:
+    type: string
+    required: false

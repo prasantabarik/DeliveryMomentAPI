@@ -1,0 +1,9 @@
+api:
+  base: "ahold-svc-mvp-deliverymomentapi"
+  path: ""
+
+#anypoint:
+  #api:
+    #id: "16470854"
+    
+http-request-timeout: "120000"
