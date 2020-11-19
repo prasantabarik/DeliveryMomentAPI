@@ -28,7 +28,7 @@ spec:
                   image: "{{ .Values.image.name }}:{{ .Values.image.version }}"
                   imagePullPolicy: Always
                   ports:
-                      - containerPort: 8080
+                      - containerPort: 8081
                         protocol: TCP
                   livenessProbe:
                       failureThreshold: 5
@@ -36,7 +36,7 @@ spec:
                       periodSeconds: 20
                       successThreshold: 1
                       tcpSocket:
-                          port: 8080
+                          port: 8081
                       timeoutSeconds: 5
                   readinessProbe:
                       failureThreshold: 5
@@ -44,11 +44,24 @@ spec:
                       periodSeconds: 20
                       successThreshold: 1
                       tcpSocket:
-                          port: 8080
+                          port: 8081
                       timeoutSeconds: 5
                   resources:
                       requests:
                           memory: 500Mi
+                  env:
+                  - name: ANYPOINT_USERNAME
+                    value: paramita-nov
+                  - name: ANYPOINT_PASSWORD
+                    value: Paramita1
+                  - name: ANYPOINT_ORGANIZATION
+                    value: 6ed85bb3-0699-4940-9f13-2cd1d6161506
+                  - name: ANYPOINT_ENVIRONMENT
+                    value: SANDBOX
+                  - name: CLIENT_ID
+                    value: 9553825cd4e842b88d25d689fe0832d1
+                  - name: CLIENT_SECRET
+                    value: FC876657BF8441Bea682b67BE34E80D9
 {{- if .Values.database.required }}
                   env:
                       - name: POSTGRES_DATABASE
