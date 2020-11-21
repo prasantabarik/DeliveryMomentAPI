@@ -2,84 +2,65 @@
 type: object
 properties:
   storeNumber:
-    type: integer
+    type: integer | nil
     required: false
   streamNumber:
-    type: integer
+    type: integer | nil
     required: false
   deliveryStreamName:
-    type: string
+    type: string | nil
     required: false
   schemaName:
-    type: string
+    type: string | nil
     required: false
   startFillDateTime:
-    type: string
+    type: string | nil
     required: false
   deliveryDateTime:
-    type: string
+    type: string | nil
     required: false
   fillDateTime:
-    type: string
+    type: string | nil
     required: false
   orderDateTime:
-    type: string
+    type: string | nil
     required: false
   initialPromotionFlag:
-    type: string
+    type: string | nil
     required: false
   mainDeliveryFlag:
-    type: string
+    type: string | nil
     required: false
   boxSize:
-    type: integer
+    type: integer | nil
     required: false
   storeAdviseFlag:
-    type: string
+    type: string | nil
     required: false
-  logisticGroupExclusion:
-    type: array
-    required: false
-    items:
-      properties:
-        logisticGroupNumber:
-          type: integer
-          required: false
   orderStatus:
-    type: string
+    type: string | nil
     required: false
   totalInitialOrderQuantity:
-    type: string
+    type: string | nil
     required: false
   totalOrderQuantity:
-    type: string
+    type: string | nil
     required: false
   deliveryScheamaType:
-    type: integer
+    type: integer | nil
     required: false
   delivererNumber: 
-    type: integer
+    type: integer | nil
     required: false
-  storeOrder:
-    type: array
-    required: false
-    items:
-      properties:
-        orderNumber:
-          type: integer
-          required: false
-        warehouseNumber:
-          type: integer
-          required: false
   createdBy:
-    type: string
+    type: string | nil
     required: false
   creationDateTime:
-    type: string
+    type: string | nil
     required: false
   updatedBy:
-    type: string
+    type: string | nil
     required: false
   updateDateTime:
-    type: string
+    type: string | nil
     required: false

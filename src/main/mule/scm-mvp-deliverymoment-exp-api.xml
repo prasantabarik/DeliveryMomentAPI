@@ -7,6 +7,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
     <http:request-config name="DeliveryMomentCRUDEndpoint" doc:name="HTTP Request configuration" doc:id="fb12d311-10e4-460f-9bab-19b24639bc12" >
 		<http:request-connection host="deliverymomentcrud-edppublic-deliverymomentcrud-dev.59ae6b648ca3437aae3a.westeurope.aksapp.io" />
 	</http:request-config>
+	<http:request-config name="DeliveryMomentAKSEndpoint" doc:name="HTTP Request configuration" doc:id="1f56018c-aa44-49ee-b87e-ae19ae35bd37" >
+		<http:request-connection host="delmoreqhandler-edppublic-delmoreqhandler-dev.59ae6b648ca3437aae3a.westeurope.aksapp.io" />
+	</http:request-config>
 	<flow name="scm-mvp-deliverymoment-exp-api-main">
         <http:listener config-ref="scm-mvp-deliverymoment-exp-api-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -189,14 +192,14 @@ output application/json
     <flow name="put:\deliveryMoment:application\json:scm-mvp-deliverymoment-exp-api-config">
         <logger level="INFO" doc:name="Put DeliveryMoment Flow -Start" doc:id="ced3c841-d5de-44e1-951d-b565cbe3cdb2" message="Flow #[flow.name] started"/>
 		<logger level="INFO" doc:name="Log RequestPayload" doc:id="e090525a-3675-40cc-8de6-8bff167e069f" message="Log Put DeliveryMoment RequestPayload :: #[payload]"/>
-		<http:request method="PUT" doc:name="Call PutDeliveryMoment Microservice" doc:id="4a875a7f-4e8f-4eef-b65b-0d1d5e1f6406" responseTimeout="${http-request-timeout}" path="/api/v1/deliveryMoment-Crud-service/model" config-ref="DeliveryMomentCRUDEndpoint"/>
+		<http:request method="PUT" doc:name="Call PutDeliveryMoment Microservice" doc:id="4a875a7f-4e8f-4eef-b65b-0d1d5e1f6406" responseTimeout="${http-request-timeout}" path="/api/v1/deliverymomenthandler/model" config-ref="DeliveryMomentAKSEndpoint"/>
 		<logger level="INFO" doc:name="Log ResponsePayload" doc:id="4a59a84e-300b-4ded-82aa-b95956037d37" message="Log Put DeliveryMoment ResponsePayload :: #[payload]"/>
 		<logger level="INFO" doc:name="Put DeliveryMoment Flow - end" doc:id="6665efc0-389b-44fc-aa34-18f59ee77119" message="Flow #[flow.name] ended"/>
     </flow>
     <flow name="delete:\deliveryMoment:application\json:scm-mvp-deliverymoment-exp-api-config">
         <logger level="INFO" doc:name="Delete DeliveryMoment Flow - Start" doc:id="ee5ac633-687a-4497-9c0e-22935e4203c1" message="Flow #[flow.name] started"/>
 		<logger level="INFO" doc:name="Log RequestPayload" doc:id="c14720a0-4e5b-4da4-84a2-a02f68ff0e84" message="Log Delete DeliveryMoment RequestPayload :: #[payload]"/>
-		<http:request method="DELETE" doc:name="Call Delete DeliveryMoment Microservice" doc:id="75ffdcff-f421-4b3f-95f5-f6969313e8b9" responseTimeout="${http-request-timeout}" path="/api/v1/deliveryMoment-Crud-service/model/{id}" config-ref="DeliveryMomentCRUDEndpoint">
+		<http:request method="DELETE" doc:name="Call Delete DeliveryMoment Microservice" doc:id="75ffdcff-f421-4b3f-95f5-f6969313e8b9" responseTimeout="${http-request-timeout}" path="/api/v1/deliverymomenthandler/model/{id}" config-ref="DeliveryMomentAKSEndpoint">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
@@ -223,7 +226,7 @@ output application/json
     <flow name="get:\deliveryMoment:scm-mvp-deliverymoment-exp-api-config">
         <logger level="INFO" doc:name="Get DeliveryMoment Flow - Start" doc:id="3e820f52-e3fd-41ef-96ec-79280a963f60" message="Flow #[flow.name] started"/>
 		<logger level="INFO" doc:name="Log RequestPayload" doc:id="2131e1b9-d719-4a39-9dd3-36dc96abffc0" message="Log Get DeliveryMoment RequestPayload :: #[payload]"/>
-		<http:request method="GET" doc:name="Call Get DeliveryMoment Microservice" doc:id="1a1dfb2f-5d80-44dc-8e33-1da154868e41" responseTimeout="${http-request-timeout}" path="/api/v1/deliveryMoment-Crud-service/model" config-ref="DeliveryMomentCRUDEndpoint">
+		<http:request method="GET" doc:name="Call Get DeliveryMoment Microservice" doc:id="1a1dfb2f-5d80-44dc-8e33-1da154868e41" responseTimeout="${http-request-timeout}" path="/api/v1/deliverymomenthandler/model" config-ref="DeliveryMomentAKSEndpoint">
 			<http:query-params ><![CDATA[#[output application/java
 ---
 {
@@ -248,14 +251,14 @@ output application/json
     <flow name="post:\deliveryMoment:application\json:scm-mvp-deliverymoment-exp-api-config">
         <logger level="INFO" doc:name="Post DeliveryMoment Flow - Start" doc:id="7f3d99fd-6868-48c7-8522-cc77ff21e012" message="Flow #[flow.name] started"/>
 		<logger level="INFO" doc:name="Log RequestPayload" doc:id="41017041-7da5-4a60-adcb-e9ad783aa238" message="Log Post DeliveryMoment RequestPayload :: #[payload]"/>
-		<http:request method="POST" doc:name="Call Post DeliveryMoment Microservice" doc:id="64d88290-4b2e-4820-9935-6b1e473ddbbb" responseTimeout="${http-request-timeout}" path="/api/v1/deliveryMoment-Crud-service/model" config-ref="DeliveryMomentCRUDEndpoint"/>
+		<http:request method="POST" doc:name="Call Post DeliveryMoment Microservice" doc:id="64d88290-4b2e-4820-9935-6b1e473ddbbb" responseTimeout="${http-request-timeout}" path="/api/v1/deliverymomenthandler/model" config-ref="DeliveryMomentAKSEndpoint"/>
 		<logger level="INFO" doc:name="Log ResponsePayload" doc:id="eb5cd5fb-cf0f-49c3-bf4c-5379e266078c" message="Log Post DeliveryMoment ResponsePayload :: #[payload]"/>
 		<logger level="INFO" doc:name="Post DeliveryMoment Flow - end" doc:id="c3f05cb5-2fad-414b-bd32-ef7ccd5cc2bc" message="Flow #[flow.name] ended"/>
     </flow>
     <flow name="post:\getDeliveryMoment:application\json:scm-mvp-deliverymoment-exp-api-config">
         <logger level="INFO" doc:name="Post GetDeliveryMoment Flow - Start" doc:id="0e631b3b-cfcd-4cf1-b3a0-4410d4b60d76" message="Flow #[flow.name] started"/>
 		<logger level="INFO" doc:name="Log RequestPayload" doc:id="c844d413-91bf-4c36-ac4c-509d49a812de" message="Log Get DeliveryMomentData RequestPayload :: #[payload]"/>
-		<http:request method="GET" doc:name="Call Get DeliveryMoment Microservice" doc:id="8781bd6d-793f-4efa-878d-d2a4265e6886" responseTimeout="${http-request-timeout}" path="/api/v1/deliveryMoment-Crud-service/model" config-ref="DeliveryMomentCRUDEndpoint">
+		<http:request method="GET" doc:name="Call Get DeliveryMoment Microservice" doc:id="8781bd6d-793f-4efa-878d-d2a4265e6886" responseTimeout="${http-request-timeout}" path="/api/v1/deliverymomenthandler/model" config-ref="DeliveryMomentAKSEndpoint">
 			<http:query-params ><![CDATA[#[output application/java
 ---
 {
