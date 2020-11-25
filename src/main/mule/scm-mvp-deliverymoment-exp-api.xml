@@ -231,7 +231,7 @@ output application/json
 ---
 {
 	('storeNumber': attributes.queryParams.storeNumber)if((attributes.queryParams.storeNumber?)and (!isEmpty(attributes.queryParams.storeNumber))),
-	('deliveryStreamNumber': attributes.queryParams.deliveryStreamNumber)if((attributes.queryParams.deliveryStreamNumber?)and (!isEmpty(attributes.queryParams.deliveryStreamNumber))),
+	('streamNumber': attributes.queryParams.streamNumber)if((attributes.queryParams.streamNumber?)and (!isEmpty(attributes.queryParams.streamNumber))),
 	('deliveryStreamName': attributes.queryParams.deliveryStreamName)if((attributes.queryParams.deliveryStreamName?)and (!isEmpty(attributes.queryParams.deliveryStreamName))),
 	('schemaName': attributes.queryParams.schemaName)if((attributes.queryParams.schemaName?)and (!isEmpty(attributes.queryParams.schemaName))),
 	('deliveryDateFrom': attributes.queryParams.deliveryDateFrom)if((attributes.queryParams.deliveryDateFrom?)and (!isEmpty(attributes.queryParams.deliveryDateFrom))),
@@ -263,7 +263,7 @@ output application/json
 ---
 {
 	('storeNumber': payload.storeNumber)if((payload.storeNumber?)and (!isEmpty(payload.storeNumber))),
-	('deliveryStreamNumber': payload.deliveryStreamNumber)if((payload.deliveryStreamNumber?)and (!isEmpty(payload.deliveryStreamNumber))),
+	('streamNumber': payload.streamNumber)if((payload.streamNumber?)and (!isEmpty(payload.streamNumber))),
 	('deliveryStreamName': payload.deliveryStreamName)if((payload.deliveryStreamName?)and (!isEmpty(payload.deliveryStreamName))),
 	('schemaName': payload.schemaName)if((payload.schemaName?)and (!isEmpty(payload.schemaName))),
 	('deliveryDateFrom': payload.deliveryDateFrom)if((payload.deliveryDateFrom?)and (!isEmpty(payload.deliveryDateFrom))),
